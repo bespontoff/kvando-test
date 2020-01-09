@@ -1,0 +1,31 @@
+{% extends 'phonebook/base.html' %}
+
+{% block content %}
+    <div class="row" style="margin-top: 20px;">
+        <div class="col">
+            <form method="get" action="{% url 'search' %}" >
+                <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">search</span>
+                  </div>
+                  <input name="query" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="card" >
+      <div class="card-header">
+          <a href="{% url 'index' %}" class="float-left btn btn-secondary" style="margin-right: 15px;">back to list</a>
+          <h4 class="float-left">search results</h4>
+      </div>
+          <ul class="list-group list-group-flush">
+            {% for entry in entry_list %}
+                <li class="list-group-item"><a href="{% url 'detail' entry.pk %}">{{ entry.name }}</a></li>
+            {% endfor %}
+            {% if not entry_list %}
+                <li class="list-group-item">no results</li>
+            {% endif %}
+          </ul>
+    </div>
+{% endblock %}

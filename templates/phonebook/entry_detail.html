@@ -1,0 +1,18 @@
+{% extends 'phonebook/base.html' %}
+
+{% block content %}
+
+<div class="card text-center" style="margin-top: 20px;">
+  <div class="card-header">
+      <a href="{% url 'index' %}" class="float-left btn btn-secondary">back to list</a>
+      <a href="{% url 'delete' entry.pk %}" class="float-right btn btn-danger">delete entry</a>
+      <a href="{% url 'edit' entry.pk %}" class="float-right btn btn-primary" style="margin-right: 5px;">edit entry</a>
+
+  </div>
+  <div class="card-body">
+    <h2 class="card-title">{{ entry.name }}</h2>
+    <h5 class="card-text">{{ entry.phone }}</h5>
+  </div>
+</div>
+
+{% endblock %}
